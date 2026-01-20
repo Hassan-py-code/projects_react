@@ -1,0 +1,42 @@
+
+
+
+import {GameHeader} from "./components/GameHeader"
+
+import { Card } from "./components/Card";
+const cardValues = [
+  "🍎",
+  "🍌",
+  "🍇",
+  "🍊",
+  "🍓",
+  "🥝",
+  "🍑",
+  "🍒",
+  "🍎",
+  "🍌",
+  "🍇",
+  "🍊",
+  "🍓",
+  "🥝",
+  "🍑",
+  "🍒",
+];
+
+
+function App(){
+
+     return(
+         
+         <div className="app">
+            <GameHeader score={3} moves={3}/>
+            <div className="cards-grid">
+                {cardValues.map((card) =>(
+                    <Card card={card} />
+                ))}
+            </div>
+        </div>
+     );
+}
+
+export default App;
