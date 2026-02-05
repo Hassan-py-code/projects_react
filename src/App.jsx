@@ -30,8 +30,10 @@ const cardValues = [
 function App(){
      
      const [cards, setCards]=useState([]);
-     const initilaizeGame=()=>{
+     const initilaizeGame = () => {
+
          // shaffle the cards
+
         console.log(cardValues);
         const finalCards = cardValues.map((value , index)=>({
                 
@@ -78,11 +80,12 @@ function App(){
          <div className="app">
             <GameHeader score={3} moves={3}/>
             <div className="cards-grid">
-                {cardValues.map((card) =>(
+                {cards.map((card) =>(
                     <Card card={card} onClick={handleCardClick} />
                 ))}
             </div>
         </div>
+
      );
 }
 
