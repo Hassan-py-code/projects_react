@@ -30,11 +30,17 @@ const cardValues = [
 function App(){
      
      const [cards, setCards]=useState([]);
+<<<<<<< HEAD
      const [flippedCards,setFlippedCards]=useState([]);
 
 
      const  initilaizeGame=()=>{
+=======
+     const initilaizeGame = () => {
+
+>>>>>>> a3e218480073b7982128dc5384ea728d94156538
          // shaffle the cards
+
         console.log(cardValues);
         const finalCards = cardValues.map((value , index)=>({
         
@@ -118,8 +124,14 @@ function App(){
                 ))}
             </div>
         </div>
+<<<<<<< HEAD
          
          </>
+=======
+
+     );
+}
+>>>>>>> a3e218480073b7982128dc5384ea728d94156538
 
      );
 };
