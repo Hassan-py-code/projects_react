@@ -30,26 +30,29 @@ const cardValues = [
 function App(){
      
      const [cards, setCards]=useState([]);
-     const initilaizeGame=()=>{
+     const [flippedCards,setFlippedCards]=useState([]);
+
+
+     const  initilaizeGame=()=>{
          // shaffle the cards
         console.log(cardValues);
         const finalCards = cardValues.map((value , index)=>({
-                
-                    id:index,
-                    value,
-                    isFlipped: false,
-                    isMatched:false,
-
-                
+        
+            id:index,
+            value,
+            isFlipped: false,
+            isMatched:false,
+        
+        
         }));
 
         setCards(finalCards);
      };
-
+    
      useEffect(()=>{
           initilaizeGame();
      }, []);
-      
+    
      const handleCardClick= (card) => {
          //don't allow clicking if card is alerady fllioing
         if(card.isFlipped || card.isMatched){
@@ -70,20 +73,54 @@ function App(){
 
         setCards(newCards);
         
-     }
+        const newFlippedCards= [...flippedCards,card.id];
+        setFlippedCards(newFlippedCards);
+        
+        //check for match if tow cards are flipped
+        if(flippedCards.length == 1){
+            const firstCard= cards[flippedCards[0]];
+
+            if(firstCard.value === card.value){
+                 alert("Match");
+            }
+            else{
+
+                 setTimeout(()=>{
+            
+                 // flipped back card 1,card 2
+                 const flippedBackCard = newCards.map((c)=>{
+                    if( newFlippedCards.includes(c.id) || c.id === card.id){
+                         return  {...c , isFlipped: false}; 
+                    }else{
+                        return c;
+                    }
+                 });
+
+                 setCards(flippedBackCard);
+                 setFlippedCards([]);
+                }, 1000)
+            }
+        
+     };
+
+    };
 
 
      return(
          
-         <div className="app">
+         <>
+            
+             <div className="app">
             <GameHeader score={3} moves={3}/>
             <div className="cards-grid">
-                {cardValues.map((card) =>(
+                {cards.map((card) =>(
                     <Card card={card} onClick={handleCardClick} />
                 ))}
             </div>
         </div>
-     );
-}
+         
+         </>
 
+     );
+};
 export default App;
