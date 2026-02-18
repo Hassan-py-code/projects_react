@@ -1,19 +1,18 @@
 
 
 
+import Navbar from "./componente/Navbar";
 
 function App(){
-   return(
-         <>
-            
-           <div className="bg-gray-950 w-full overflow-hidden">
-              <div className="">
-                hddd
-              </div>
-           </div>
+   
+    return(
 
-         </>
-      )
+        <>
+           
+           <Navbar/>
+         
+        </>
+    )
 };
 
 
